@@ -1,0 +1,24 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local editor and operating-system files
+.DS_Store
+.vscode/
+.idea/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Download archives can be fetched again
+*.zip
+
+# Keep final notebooks, charts, reports and model files trackable.
