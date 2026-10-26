@@ -1,0 +1,11 @@
+{
+  "total_messages": 5171,
+  "spam_messages": 653,
+  "ham_messages": 4518,
+  "p_spam": 0.12628118352349643,
+  "p_ham": 0.8737188164765035,
+  "expectation_Y": 0.12628118352349643,
+  "variance_Y": 0.11033424621140143,
+  "empirical_mean_Y": 0.12628118352349643,
+  "empirical_population_variance_Y": 0.11033424621140142
+}
