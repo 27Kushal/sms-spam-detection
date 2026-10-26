@@ -1,0 +1,27 @@
+{
+  "raw_records": 5574,
+  "missing_values": {
+    "label": 0,
+    "message": 0
+  },
+  "blank_non_null_values": {
+    "label": 0,
+    "message": 0
+  },
+  "removed_missing_or_blank_records": 0,
+  "removed_duplicate_messages": 403,
+  "clean_records": 5171,
+  "raw_class_counts": {
+    "ham": 4827,
+    "spam": 747
+  },
+  "clean_class_counts": {
+    "ham": 4518,
+    "spam": 653
+  },
+  "label_encoding": {
+    "ham": 0,
+    "spam": 1
+  },
+  "duplicate_rule": "Exact message text; retain the first occurrence"
+}
