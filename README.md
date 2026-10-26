@@ -1,11 +1,6 @@
 # Probabilistic SMS Spam Detection
-
-BAMAT207 Probability and Statistics — Project Activity
-
-**Student:** Kushal Bagla  
-**Roll number:** 25BAI0044  
+ 
 **Topic:** Probability and Random Variables  
-**Submission deadline:** 27 October 2026
 
 ## Objective
 
