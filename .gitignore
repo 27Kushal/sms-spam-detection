@@ -22,3 +22,6 @@ __pycache__/
 *.zip
 
 # Keep final notebooks, charts, reports and model files trackable.
+
+# Local report-building and visual-check intermediates
+work/

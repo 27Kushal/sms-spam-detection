@@ -32,7 +32,7 @@ UCI lists the dataset under the Creative Commons Attribution 4.0 International l
 
 ## Current status
 
-Stages 1 to 4 are complete: setup, dataset handling, probability analysis, model training and evaluation. The executed notebook covers assignment Activities 1 to 7. Interactive SMS prediction and the final submission report remain for the last stage.
+All five development stages are complete. The executed notebook covers assignment Activities 1 to 8, including interactive SMS prediction. The final five-page report is available at `reports/Project_Report.docx`. All work is committed locally; publishing the latest commits is handled by the repository owner.
 
 ## Submission deliverables
 
@@ -116,7 +116,7 @@ Additional outputs:
 - `src/probability.py`: reusable probability-analysis functions.
 - `tests/test_probability.py`: four checks covering word boundaries, repeated words, Bayes calculations, moments, absent words, a missing spam class and empty input.
 
-All 13 unit tests passed. The notebook cells executed successfully, all five Bayes equalities passed, and the class-distribution chart was visually checked.
+All 17 unit tests passed. The notebook cells executed successfully, all five Bayes equalities passed, and the class-distribution chart was visually checked.
 
 
 ## Model training and evaluation
@@ -145,3 +145,41 @@ Additional outputs:
 - `src/model.py` and `tests/test_model.py`: preparation, training, evaluation and regression checks.
 
 Run the notebook from the top to regenerate the model and reports. Reloading the saved model was checked to reproduce both predictions and probabilities. All 13 unit tests passed, including checks for split reproducibility, training-only vocabulary learning and confusion-matrix orientation.
+
+
+## Predict a new SMS
+
+From the repository root, activate the environment and start the interactive prompt:
+
+```bash
+source .venv/bin/activate
+python -m src.predict
+```
+
+Enter an SMS and read its predicted class and both model probabilities. Type `/quit` to exit. For one message:
+
+```bash
+python -m src.predict --message "Congratulations! You have won a free prize. Claim now."
+```
+
+Measured output with the saved model:
+
+```text
+Prediction: Spam
+P(Spam | Message) = 0.9999998276
+P(Ham | Message) = 1.724077006e-07
+```
+
+In the notebook, set `RUN_INTERACTIVE = True` in Activity 8 to enter your own messages. It defaults to False so Run All can complete unattended. Blank input is rejected; if no vocabulary words are recognized, the output explains that only class priors are being used. Probabilities are model estimates and have not been calibrated.
+
+## Final submission
+
+- `reports/Project_Report.docx`: five-page report in the assignment's eight-activity order, with student details, formulas, charts, results and references.
+- `reports/example_prediction.json`: measured result for the assignment's example SMS.
+- `src/predict.py`: interactive and single-message prediction.
+- `tests/test_predict.py`: input handling, class ordering and unknown-vocabulary checks.
+- `SUBMISSION.md`: requirement-to-file mapping and final publication steps.
+
+All 20 notebook code cells ran successfully. All 17 unit tests passed, the interactive prompt passed its input/recovery/exit checks, and every report page was visually inspected. The repository owner must push the final commits and share the repository link for submission.
+
+Repository: https://github.com/27Kushal/sms-spam-detection
