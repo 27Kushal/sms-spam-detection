@@ -1,0 +1,21 @@
+source_line,label,message,target,predicted_target,predicted_label,p_ham,p_spam,error_type
+4822,spam,Check Out Choose Your Babe Videos @ sms.shsex.netUN fgkslpoPW fgkslpo,1,0,ham,0.630397210699,0.369602789301,false_negative
+2771,spam,Burger King - Wanna play footy at a top stadium? Get 2 Burger King before 1st Sept and go Large or Super with Coca-Cola and walk out a winner,1,0,ham,0.546824199998,0.453175800002,false_negative
+4863,ham,Nokia phone is lovly..,0,1,spam,0.0532485532423,0.946751446758,false_positive
+3531,spam,"Xmas & New Years Eve tickets are now on sale from the club, during the day from 10am till 8pm, and on Thurs, Fri & Sat night this week. They're selling fast!",1,0,ham,0.995103168114,0.00489683188609,false_negative
+1876,spam,Would you like to see my XXX pics they are so hot they were nearly banned in the uk!,1,0,ham,0.999997893188,2.10681214232e-06,false_negative
+2403,spam,Babe: U want me dont u baby! Im nasty and have a thing 4 filthyguys. Fancy a rude time with a sexy bitch. How about we go slo n hard! Txt XXX SLO(4msgs),1,0,ham,0.999999967373,3.26272758915e-08,false_negative
+1470,spam,Hi its LUCY Hubby at meetins all day Fri & I will B alone at hotel U fancy cumin over? Pls leave msg 2day 09099726395 Lucy x Calls£1/minMobsmoreLKPOBOX177HP51FL,1,0,ham,0.999961499601,3.85003989898e-05,false_negative
+4601,ham,Have you laid your airtel line to rest?,0,1,spam,0.128620084637,0.871379915363,false_positive
+4214,spam,Missed call alert. These numbers called but left no message. 07008009200,1,0,ham,0.996423301783,0.00357669821681,false_negative
+4730,ham,I (Career Tel) have added u as a contact on INDYAROCKS.COM to send FREE SMS. To remove from phonebook - sms NO to  &lt;#&gt;,0,1,spam,0.08393277486,0.91606722514,false_positive
+4145,spam,"In The Simpsons Movie released in July 2007 name the band that died at the start of the film? A-Green Day, B-Blue Day, C-Red Day. (Send A, B or C)",1,0,ham,0.999999992548,7.45195983155e-09,false_negative
+789,spam,Ever thought about living a good life with a perfect partner? Just txt back NAME and AGE to join the mobile community. (100p/SMS),1,0,ham,0.625610564102,0.374389435898,false_negative
+5543,spam,ASKED 3MOBILE IF 0870 CHATLINES INCLU IN FREE MINS. INDIA CUST SERVs SED YES. L8ER GOT MEGA BILL. 3 DONT GIV A SHIT. BAILIFF DUE IN DAYS. I O £250 3 WANT £800,1,0,ham,0.64920706224,0.35079293776,false_negative
+5452,spam,"Latest News! Police station toilet stolen, cops have nothing to go on!",1,0,ham,0.781002450695,0.218997549305,false_negative
+1664,spam,Hi if ur lookin 4 saucy daytime fun wiv busty married woman Am free all next week Chat now 2 sort time 09099726429 JANINExx Calls£1/minMobsmoreLKPOBOX177HP51FL,1,0,ham,0.635568943206,0.364431056794,false_negative
+3891,ham,Unlimited texts. Limited minutes.,0,1,spam,0.135666367056,0.864333632944,false_positive
+2970,ham,"Mostly sports type..lyk footbl,crckt..",0,1,spam,0.489513456387,0.510486543613,false_positive
+4623,ham,"Received, understood n acted upon!",0,1,spam,0.397912057273,0.602087942727,false_positive
+3065,spam,"Hi babe its Jordan, how r u? Im home from abroad and lonely, text me back if u wanna chat xxSP visionsms.com Text stop to stopCost 150p 08712400603",1,0,ham,0.569131181605,0.430868818395,false_negative
+673,spam,"SMS. ac sun0819 posts HELLO:""You seem cool, wanted to say hi. HI!!!"" Stop? Send STOP to 62468",1,0,ham,0.580387767227,0.419612232773,false_negative

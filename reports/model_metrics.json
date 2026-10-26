@@ -1,0 +1,54 @@
+{
+  "test_messages": 1035,
+  "accuracy": 0.9806763285024155,
+  "spam_precision": 0.9512195121951219,
+  "spam_recall": 0.8931297709923665,
+  "spam_f1": 0.9212598425196851,
+  "always_ham_baseline_accuracy": 0.8734299516908213,
+  "confusion_matrix": [
+    [
+      898,
+      6
+    ],
+    [
+      14,
+      117
+    ]
+  ],
+  "matrix_label_order": [
+    "ham",
+    "spam"
+  ],
+  "matrix_orientation": "rows = actual; columns = predicted",
+  "true_negatives": 898,
+  "false_positives": 6,
+  "false_negatives": 14,
+  "true_positives": 117,
+  "classification_report": {
+    "ham": {
+      "precision": 0.9846491228070176,
+      "recall": 0.9933628318584071,
+      "f1-score": 0.9889867841409692,
+      "support": 904.0
+    },
+    "spam": {
+      "precision": 0.9512195121951219,
+      "recall": 0.8931297709923665,
+      "f1-score": 0.9212598425196851,
+      "support": 131.0
+    },
+    "accuracy": 0.9806763285024155,
+    "macro avg": {
+      "precision": 0.9679343175010697,
+      "recall": 0.9432463014253868,
+      "f1-score": 0.9551233133303272,
+      "support": 1035.0
+    },
+    "weighted avg": {
+      "precision": 0.9804179353769129,
+      "recall": 0.9806763285024155,
+      "f1-score": 0.9804145818681302,
+      "support": 1035.0
+    }
+  }
+}
