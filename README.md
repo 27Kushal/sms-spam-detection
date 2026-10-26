@@ -32,7 +32,7 @@ UCI lists the dataset under the Creative Commons Attribution 4.0 International l
 
 ## Current status
 
-Project setup is in progress. Dataset processing, notebook results, model training and the final report will be added in subsequent stages. No evaluation results are claimed yet.
+Stages 1 and 2 are complete: project setup and dataset handling. The notebook has been executed through loading, cleaning, label encoding and export. Probability calculations, charts, model training and the final report remain for later stages. No model evaluation results are claimed yet.
 
 ## Submission deliverables
 
@@ -58,4 +58,36 @@ python -m pip install -r requirements.txt
 
 The listed direct dependency versions have been checked together using library imports and a small CountVectorizer and MultinomialNB smoke check. This check verifies basic library compatibility, not project accuracy. Transitive dependencies are not locked.
 
-The notebook will be added in the dataset stage. Open it in a notebook-capable editor and select the `.venv` Python interpreter, or upload it to Google Colab. Colab setup instructions will be included with the notebook. The dataset will be downloaded from UCI using Python's standard library, so `ucimlrepo` is not required.
+Open `sms_spam_detection.ipynb` in a notebook-capable editor from the repository root and select the `.venv` Python interpreter. Run all cells in order. Alternatively, upload the notebook to Google Colab; its data functions are self-contained and it downloads the official source if absent. Pandas is required and is normally preinstalled in Colab. The download uses Python's standard library, so `ucimlrepo` is not required.
+
+
+## Dataset handling results
+
+| Class | Original records | Duplicate messages removed | Cleaned records |
+| --- | ---: | ---: | ---: |
+| Ham | 4,827 | 309 | 4,518 |
+| Spam | 747 | 94 | 653 |
+| Total | 5,574 | 403 | 5,171 |
+
+There are no missing or blank labels/messages. Deduplication retains the first occurrence of each exact message text. Case, punctuation and whitespace in nonblank messages are preserved. Conflicting labels for the same message would stop processing rather than silently choose a label; none were found. Ham is encoded as 0 and spam as 1.
+
+The parser splits each source line at the first tab and treats quotation marks as literal SMS content. The raw file is checked against a recorded SHA-256 digest before use. Duplicate removal precedes the future training/test split.
+
+## Files completed so far
+
+- `sms_spam_detection.ipynb`: executed notebook with explanations and cleaning outputs.
+- `src/data.py`: reusable downloading, loading and cleaning functions.
+- `data/raw/`: unchanged official dataset and its original documentation.
+- `data/processed/sms_cleaned.csv`: cleaned messages, numeric labels and original source line numbers.
+- `reports/dataset_summary.json`: machine-readable cleaning summary.
+- `tests/test_data.py`: parser, validation and cleaning regression checks.
+
+## Verification
+
+From the repository root, with the project environment activated:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Five checks cover literal quotation marks and embedded tabs, missing/blank records, deduplication and encoding, conflicting labels, checksum validation and official dataset integrity. The executed notebook additionally confirms that saving and reloading the cleaned CSV preserves the data exactly.
