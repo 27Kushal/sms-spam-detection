@@ -45,3 +45,17 @@ Project setup is in progress. Dataset processing, notebook results, model traini
 - GitHub repository link
 
 Development is organized into meaningful local commits. Publishing to GitHub is handled by the repository owner.
+
+## Local Python setup
+
+Use Python 3.12. From the repository directory, run:
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+The listed direct dependency versions have been checked together using library imports and a small CountVectorizer and MultinomialNB smoke check. This check verifies basic library compatibility, not project accuracy. Transitive dependencies are not locked.
+
+The notebook will be added in the dataset stage. Open it in a notebook-capable editor and select the `.venv` Python interpreter, or upload it to Google Colab. Colab setup instructions will be included with the notebook. The dataset will be downloaded from UCI using Python's standard library, so `ucimlrepo` is not required.
