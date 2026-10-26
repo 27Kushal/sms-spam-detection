@@ -1,0 +1,7 @@
+{
+  "message": "Congratulations! You have won a free prize. Claim now.",
+  "prediction": "Spam",
+  "p_spam": 0.9999998275922983,
+  "p_ham": 1.724077006309979e-07,
+  "has_known_words": true
+}
