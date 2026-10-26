@@ -27,3 +27,31 @@ class SplitTests(unittest.TestCase):
         self.clean.loc[1, "message"] = self.clean.loc[0, "message"]
         with self.assertRaisesRegex(ValueError, "duplicate"):
             split_messages(self.clean)
+
+
+class ModelTests(unittest.TestCase):
+    def test_vectorizer_does_not_learn_test_vocabulary(self):
+        from src.model import train_model
+        train = pd.DataFrame({"message": ["lunch meeting", "free prize", "hello friend", "claim reward"], "target": [0, 1, 0, 1]})
+        model = train_model(train)
+        before = dict(model.named_steps["vectorizer"].vocabulary_)
+        model.predict(["testonlyword free"])
+        self.assertNotIn("testonlyword", model.named_steps["vectorizer"].vocabulary_)
+        self.assertEqual(before, model.named_steps["vectorizer"].vocabulary_)
+
+    def test_error_orientation_and_metrics(self):
+        import numpy as np
+        from src.model import evaluate_model
+        class FixedModel:
+            classes_ = np.array([0, 1])
+            def predict(self, messages):
+                return np.array([0, 1, 0, 1, 1])
+            def predict_proba(self, messages):
+                return np.array([[.8, .2], [.2, .8], [.7, .3], [.1, .9], [.2, .8]])
+        test = pd.DataFrame({"source_line": range(5), "message": list("abcde"), "target": [0, 0, 1, 1, 1], "label": ["ham", "ham", "spam", "spam", "spam"]})
+        metrics, results = evaluate_model(FixedModel(), test)
+        self.assertEqual(metrics["confusion_matrix"], [[1, 1], [1, 2]])
+        self.assertEqual(metrics["accuracy"], 3/5)
+        self.assertAlmostEqual(metrics["spam_precision"], 2/3)
+        self.assertAlmostEqual(metrics["spam_recall"], 2/3)
+        self.assertEqual(results.error_type.tolist(), ["correct", "false_positive", "false_negative", "correct", "correct"])
