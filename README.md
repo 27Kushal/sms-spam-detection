@@ -32,7 +32,7 @@ UCI lists the dataset under the Creative Commons Attribution 4.0 International l
 
 ## Current status
 
-Stages 1 and 2 are complete: project setup and dataset handling. The notebook has been executed through loading, cleaning, label encoding and export. Probability calculations, charts, model training and the final report remain for later stages. No model evaluation results are claimed yet.
+Stages 1 to 3 are complete: project setup, dataset handling and probability analysis. The executed notebook covers assignment Activities 1 to 4, including the class-distribution chart, all five word probabilities, Bayes checks and Bernoulli expectation and variance. Model training, evaluation and the final report remain for later stages. No model evaluation results are claimed yet.
 
 ## Submission deliverables
 
@@ -58,7 +58,7 @@ python -m pip install -r requirements.txt
 
 The listed direct dependency versions have been checked together using library imports and a small CountVectorizer and MultinomialNB smoke check. This check verifies basic library compatibility, not project accuracy. Transitive dependencies are not locked.
 
-Open `sms_spam_detection.ipynb` in a notebook-capable editor from the repository root and select the `.venv` Python interpreter. Run all cells in order. Alternatively, upload the notebook to Google Colab; its data functions are self-contained and it downloads the official source if absent. Pandas is required and is normally preinstalled in Colab. The download uses Python's standard library, so `ucimlrepo` is not required.
+Open `sms_spam_detection.ipynb` in a notebook-capable editor from the repository root and select the `.venv` Python interpreter. Run all cells in order. Alternatively, upload the notebook to Google Colab; its data functions are self-contained and it downloads the official source if absent. Pandas, NumPy and Matplotlib are required and are normally preinstalled in Colab. The download uses Python's standard library, so `ucimlrepo` is not required.
 
 
 ## Dataset handling results
@@ -90,4 +90,30 @@ From the repository root, with the project environment activated:
 python -m unittest discover -s tests -v
 ```
 
-Five checks cover literal quotation marks and embedded tabs, missing/blank records, deduplication and encoding, conflicting labels, checksum validation and official dataset integrity. The executed notebook additionally confirms that saving and reloading the cleaned CSV preserves the data exactly.
+Five data checks cover literal quotation marks and embedded tabs, missing/blank records, deduplication and encoding, conflicting labels, checksum validation and official dataset integrity. The executed notebook additionally confirms that saving and reloading the cleaned CSV preserves the data exactly.
+
+
+## Probability analysis results
+
+Spam accounts for 12.6281% of the cleaned messages and ham for 87.3719%. The Bernoulli spam indicator has expectation 0.12628118 and variance 0.11033425.
+
+| Word | P(Spam given word) |
+| --- | ---: |
+| free | 72.9064% |
+| prize | 100.0000% |
+| win | 89.0909% |
+| urgent | 91.9355% |
+| offer | 80.0000% |
+
+These are empirical conditional probabilities for case-insensitive whole-word presence, counted once per message. They do not guarantee outcomes for new SMS messages. All five direct calculations agree with Bayes' theorem.
+
+Additional outputs:
+
+- `reports/figures/class_distribution.png`: labelled class-count chart.
+- `reports/word_probabilities.csv`: message counts and conditional probabilities.
+- `reports/probability_summary.json`: class probabilities and Bernoulli moments.
+- `reports/probability_analysis.md`: formulas, results and interpretation.
+- `src/probability.py`: reusable probability-analysis functions.
+- `tests/test_probability.py`: four checks covering word boundaries, repeated words, Bayes calculations, moments, absent words, a missing spam class and empty input.
+
+All nine unit tests passed. The notebook cells executed successfully, all five Bayes equalities passed, and the class-distribution chart was visually checked.
