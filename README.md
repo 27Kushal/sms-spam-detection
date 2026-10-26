@@ -32,7 +32,7 @@ UCI lists the dataset under the Creative Commons Attribution 4.0 International l
 
 ## Current status
 
-Stages 1 to 3 are complete: project setup, dataset handling and probability analysis. The executed notebook covers assignment Activities 1 to 4, including the class-distribution chart, all five word probabilities, Bayes checks and Bernoulli expectation and variance. Model training, evaluation and the final report remain for later stages. No model evaluation results are claimed yet.
+Stages 1 to 4 are complete: setup, dataset handling, probability analysis, model training and evaluation. The executed notebook covers assignment Activities 1 to 7. Interactive SMS prediction and the final submission report remain for the last stage.
 
 ## Submission deliverables
 
@@ -58,7 +58,7 @@ python -m pip install -r requirements.txt
 
 The listed direct dependency versions have been checked together using library imports and a small CountVectorizer and MultinomialNB smoke check. This check verifies basic library compatibility, not project accuracy. Transitive dependencies are not locked.
 
-Open `sms_spam_detection.ipynb` in a notebook-capable editor from the repository root and select the `.venv` Python interpreter. Run all cells in order. Alternatively, upload the notebook to Google Colab; its data functions are self-contained and it downloads the official source if absent. Pandas, NumPy and Matplotlib are required and are normally preinstalled in Colab. The download uses Python's standard library, so `ucimlrepo` is not required.
+Open `sms_spam_detection.ipynb` in a notebook-capable editor from the repository root and select the `.venv` Python interpreter. Run all cells in order. Alternatively, upload the notebook to Google Colab; its data functions are self-contained and it downloads the official source if absent. Pandas, NumPy, Matplotlib, scikit-learn and joblib are required and are normally preinstalled in Colab. The repository requirements.txt records the verified versions; different versions may change results. The download uses Python's standard library, so `ucimlrepo` is not required.
 
 
 ## Dataset handling results
@@ -116,4 +116,32 @@ Additional outputs:
 - `src/probability.py`: reusable probability-analysis functions.
 - `tests/test_probability.py`: four checks covering word boundaries, repeated words, Bayes calculations, moments, absent words, a missing spam class and empty input.
 
-All nine unit tests passed. The notebook cells executed successfully, all five Bayes equalities passed, and the class-distribution chart was visually checked.
+All 13 unit tests passed. The notebook cells executed successfully, all five Bayes equalities passed, and the class-distribution chart was visually checked.
+
+
+## Model training and evaluation
+
+A stratified 80/20 split with random_state=42 produces 4,136 training messages and 1,035 test messages. The pipeline fits CountVectorizer() and MultinomialNB() on the training partition only. The trained vocabulary contains 7,669 tokens.
+
+| Held-out metric | Result |
+| --- | ---: |
+| Accuracy | 98.0676% |
+| Spam precision | 95.1220% |
+| Spam recall | 89.3130% |
+| Spam F1-score | 0.921260 |
+| Always-ham baseline accuracy | 87.3430% |
+
+Of the test messages, 14 spam messages were missed and 6 genuine messages were incorrectly flagged as spam. See `reports/model_evaluation.md` for formulas, the labelled confusion matrix and limitations. These are single-split results; probabilities have not been calibrated.
+
+Additional outputs:
+
+- `models/sms_naive_bayes.joblib`: fitted vectorizer and classifier pipeline.
+- `models/training_metadata.json`: dataset checksums, split settings and runtime versions.
+- `reports/split_manifest.csv`: source record assignments to training and testing.
+- `reports/model_metrics.json` and `reports/classification_report.txt`: evaluation metrics.
+- `reports/figures/confusion_matrix.png`: labelled confusion matrix.
+- `reports/test_predictions.csv`: every held-out prediction and both class probabilities.
+- `reports/misclassified_messages.csv`: all 20 errors, labelled by type.
+- `src/model.py` and `tests/test_model.py`: preparation, training, evaluation and regression checks.
+
+Run the notebook from the top to regenerate the model and reports. Reloading the saved model was checked to reproduce both predictions and probabilities. All 13 unit tests passed, including checks for split reproducibility, training-only vocabulary learning and confusion-matrix orientation.

@@ -41,4 +41,4 @@ The mean and population variance of the numeric labels independently match these
 
 ## Scope
 
-These results summarize the complete cleaned dataset for the assignment. They will not be used to tune the classifier against the test set. Training/test preparation and model evaluation remain for the next stage.
+These results summarize the complete cleaned dataset for the assignment. They will not be used to tune the classifier against the test set. Training/test preparation and model evaluation are documented in model_evaluation.md.
